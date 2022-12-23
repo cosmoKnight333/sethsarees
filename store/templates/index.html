@@ -1,0 +1,191 @@
+    {% extends 'base.html' %}
+    {% load static %}
+    
+    {% block index_nav %}
+    <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
+    {% endblock index_nav %}
+
+    {% block show_corousel %}
+    <div id="header-carousel" class="carousel slide" data-ride="carousel" >
+        <div class="carousel-inner">
+            
+            <div class="carousel-item active" style="height: 410px;">
+                <img class="img-fluid"   src="{% static './store/img/carousel-1.jpg' %}" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 700px;">
+                        <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                        <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
+                        <a href="/category" class="btn btn-light py-2 px-3">Explore Now</a>
+                    </div>
+                </div>
+            </div>
+            {%for corousel in corousels%}
+
+            <div class="carousel-item" style="height: 410px;">
+                <img class="img-fluid" src="{{corousel.image.url}}" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 700px;">
+                        <h4 class="text-light text-uppercase font-weight-medium mb-3">{{corousel.subheading}}</h4>
+                        <h3 class="display-4 text-white font-weight-semi-bold mb-4">{{corousel.heading}}</h3>
+                        <a href="tel:{{phone_no}}" class="btn btn-light py-2 px-3">Call-Us <span class="pl-1"><i class="fa fa-phone" ></i></span></a>
+                        
+
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+            <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                <span class="carousel-control-prev-icon mb-n2"></span>
+            </div>
+        </a>
+        <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+            <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                <span class="carousel-control-next-icon mb-n2"></span>
+            </div>
+        </a>
+    </div>
+    
+    {% endblock show_corousel %}
+    
+    {% block content %}
+        <!-- Featured Start -->
+        <div class="container-fluid pt-5">
+            <div class="row px-xl-5 pb-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center border mb-4" data-aos="fade-right" style="padding: 30px;">
+                        <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                        <h5 class="font-weight-semi-bold m-0">Genuine Product</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center border mb-4" data-aos="zoom-in-up" style="padding: 30px;">
+                        <i class=""></i>
+                        <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                        <h5 class="font-weight-semi-bold m-0">Wholesale Rate</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center border mb-4" data-aos="zoom-in-up" style="padding: 30px;">
+                        <h1 class="fas fa-drafting-compass text-primary m-0 mr-3"></h1>
+                        <h5 class="font-weight-semi-bold m-0">Exquisite Designs</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="d-flex align-items-center border mb-4" data-aos="fade-left" style="padding: 30px;">
+                        <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                        <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Featured End -->
+
+
+        
+    <!-- Categories Start -->
+    <div class="container-fluid pt-5" >
+        <div class="text-center mb-4" data-aos="zoom-out-up">
+            <h2 class="section-title px-5"><span class="px-2">Extensive Range Of Wholesale Banarasi Sarees</span></h2>
+        </div>
+        
+        <div class="row px-xl-5 pb-3">
+            
+            {% for category in categories|slice:":9" %}
+            <div class="col-lg-4 col-md-6 pb-1" data-aos="fade-up">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; height: 400px">
+                    <p class="text-right">10 Products</p>
+                    <a href="/category?category={{category.id}}" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid ratio ratio-21x9"  src="{{category.image.url}}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">{{category.name}}</h5>
+                </div>
+            </div>
+            
+            {% endfor %}
+            
+        </div>
+    </div>
+    <!-- Categories End -->
+
+
+<!-- Subscribe Start -->
+<div class="container-fluid bg-secondary my-5" data-aos="zoom-out">
+    <div class="row justify-content-md-center py-5 px-xl-5">
+        <div class="col-12 col-md-6  py-5">
+            <div class="text-center mb-2 pb-2">
+                <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">Ask Your Query</span></h2>
+                <p>Chat with us on Whatsapp to get your queries resolved.<br>We provide 24x7 support.</p>
+            </div>
+            <form action="">
+                <div class="input-group d-flex flex-row align-items-center justify-content-center">
+                    <h4>Click here to connect on Whatsapp:</h4>
+                    <div class="mx-2 mb-1">
+                        <a href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+Store" class="btn btn-primary px-3">Chat With Us</a>
+                    
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Subscribe End -->
+
+        <!-- Reach us Start-->
+        <div class="container-fluid pt-5">
+            <div class="text-center mb-4" data-aos="zoom-in">
+                <h2 class="section-title px-5" ><span class="px-2">Reach Out To Our Wholesale Banarasi Sarees Showroom In Varanasi</span></h2>
+            </div>
+            <div class="row ml-1 container-fluid">
+                <div class="col-lg-6 justify-content-center mt-4" style="overflow: hidden;text-align:center">
+                        <iframe class="mw-100" data-aos="fade-right"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.7417642033724!2d83.00921207559787!3d25.312878827005015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2e1ed9ad1ce9%3A0x752abd6f8a7c826!2sSeth%20Sarees!5e0!3m2!1sen!2sin!4v1671276365611!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+                </div>
+                <div class="col-lg-6 " style="overflow: hidden;">
+                    <div class=" text-center m-4 p-2  bg-secondary mb-2" data-aos="slide-up">
+                        <h4 class=" px-5 mb-1"><span class=" px-2">1. Get Directions To Our Store</span></h4>
+                        <p>Get complete details about the showroom address and use maps for guided navigation and don't forget to explore the heart of Varanasi City.</p>
+                    </div>
+                    <div class="text-center m-4 p-2 bg-secondary mb-2" data-aos="slide-up">
+                        <h4 class=" px-5 mb-1"><span class=" px-2">2. Get Stuck! Call US</span></h4>
+                        <p>Call us as you reach Old Kashi Vishwanath Temple.We shall come and pick you.</p>
+                    </div>
+                    <div class="text-center m-4 p-2 bg-secondary mb-2" data-aos="slide-up">
+                        <h4 class=" px-5 mb-1"><span class=" px-2">3. Select Your Favourite Saree</span></h4>
+                        <p>Select your favourite option from our wide range of silk suits, silk sarees, and pure handloom sarees.You will be left speechless when you don our collection of prepossessing Sarees.</p>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+        <!-- Reach us End-->
+        
+        <!-- Review Start -->
+
+        <div class="container-fluid bg-secondary  p-5 my-4" >
+            <div class="row justify-content-center justify-content-md-center  px-xl-5">
+                <div class="col-lg-6  ">
+                    <div class="text-center mb-2 pb-2">
+                        <h2 class="section-title px-5 "><span class="bg-secondary px-2">What our customers say</span> </h2>
+                    </div>  
+                </div>
+               
+            </div>
+            <div class="text-center mb-2 pb-2">
+                <a class="btn btn-primary px-4" href="https://www.google.com/search?q=seth%20sarees&oq=seth+sarees&aqs=chrome..69i57j69i59j69i61l3.2280j0j4&sourceid=chrome&ie=UTF-8&tbs=lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsb6kLBLebcYjMVq3ZZjTXegQRwJRQ:1671576707763&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjQ5oW_pIn8AhVywXMBHfXHBNoQvS56BAgeEAE&sa=X&rlst=f#lrd=0x398e2e1ed9ad1ce9:0x752abd6f8a7c826,3,,,&rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6592943,83.033485],[25.2677299,82.87100439999999]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10">Review Us</a>
+            </div> 
+            <div>
+                <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="80246" view-url="https://widget.tagembed.com/80246">  </div> <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
+            </div>
+        </div>
+        <!-- Review End -->
+    <div class="container-fluid p-3">
+        <div class="text-center mb-2 mt-5 pb-2">
+            <h2 class="section-title px-5 "><span class="px-2">Do Visit in Varanasi</span> </h2>
+        </div>
+        <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="80259" view-url="https://widget.tagembed.com/80259">  </div> <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
+    </div>
+    {% endblock content %}
+    
