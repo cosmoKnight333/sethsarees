@@ -3,7 +3,6 @@ aiodns==3.0.0
 aiohttp==3.7.0
 aiohttp-socks==0.4.1
 aiosignal==1.2.0
-ancs4linux @ file:///home/cosmoknight/ancs4linux
 apturl==0.5.2
 asgiref==3.5.2
 asttokens==2.0.8
@@ -170,7 +169,6 @@ tensorflow-io-gcs-filesystem==0.27.0
 termcolor==2.0.1
 tornado==6.2
 traitlets==5.4.0
-twint @ git+https://github.com/woluxwolu/twint.git@21acd871948cc79c8e95bc72bc3b9064cb968012
 typeguard==2.13.3
 typer==0.4.2
 typing_extensions==4.3.0
