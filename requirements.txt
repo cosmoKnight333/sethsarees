@@ -115,7 +115,6 @@ pyparsing==2.4.7
 pyRFC3339==1.1
 pyrsistent==0.18.1
 PySocks==1.7.1
-python-apt==2.3.0+ubuntu2.1
 python-dateutil==2.8.2
 python-debian===0.1.43ubuntu1
 python-socks==2.0.3
@@ -141,11 +140,6 @@ tenacity==8.0.1
 tensorboard==2.10.0
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
-tensorflow==2.10.0
-tensorflow-addons==0.18.0
-tensorflow-estimator==2.10.0
-tensorflow-hub==0.12.0
-tensorflow-io-gcs-filesystem==0.27.0
 termcolor==2.0.1
 tornado==6.2
 traitlets==5.4.0
