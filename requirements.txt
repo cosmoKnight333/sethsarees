@@ -3,7 +3,6 @@ aiodns==3.0.0
 aiohttp==3.7.0
 aiohttp-socks==0.4.1
 aiosignal==1.2.0
-apturl==0.5.2
 asgiref==3.5.2
 asttokens==2.0.8
 astunparse==1.6.3
@@ -14,17 +13,14 @@ backcall==0.2.0
 bcrypt==3.2.0
 beautifulsoup4==4.11.1
 blinker==1.4
-Brlapi==0.8.3
 cachetools==5.2.0
 cchardet==2.1.7
 certifi==2020.12.5
 cffi==1.15.1
 chardet==4.0.0
 charset-normalizer==2.1.1
-chrome-gnome-shell==0.0.0
 click==8.0.3
 colorama==0.4.4
-command-not-found==0.3
 configparser==5.0.1
 contourpy==1.0.5
 crayons==0.4.0
