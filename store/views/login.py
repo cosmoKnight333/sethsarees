@@ -14,6 +14,9 @@ class Login(View):
         if customer:
             flag=check_password(password,customer.password) 
             if flag:
+                request.session['customer']=customer.id
+                request.session['customer_first_name']=customer.first_name
+                request.session['customer_phone_number']=customer.phone_number
                 return redirect('homepage')
             else :
                 error_msg="Enter Valid Password"
@@ -25,12 +28,16 @@ class Login(View):
             if customer:
                 flag=check_password(password,customer.password) 
                 if flag:
+                    request.session['customer']=customer.id
+                    request.session['customer_first_name']=customer.first_name
+                    request.session['customer_phone_number']=customer.phone_number
+                    
                     return redirect('homepage')
                 else :
                     error_msg="Enter Valid Password" 
                     data['error_msg']=error_msg       
                     return render(request,'login.html',data)    
             else :
-                error_msg="Enter Valid Email/Whatsapp Number"
+                error_msg="Enter Valid Email/Whatsapp Number."
                 data['error_msg']=error_msg
                 return render(request,'login.html',data)     

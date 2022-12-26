@@ -21,4 +21,10 @@ def index(request):
     data['categories']=categories
     data['corousels']=corousels
     data['banaras_photos']=banaras_photos
+    print('you are: ',request.session.get('customer_first_name'))
     return render(request,'index.html',data)   
+
+def logout(request):
+    request.session.clear()
+    return render(request,'index.html',data)   
+    

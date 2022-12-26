@@ -1,1 +1,0 @@
-web: gunicorn sethsarees.wsgi --log-file --

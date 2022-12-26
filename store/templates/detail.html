@@ -19,7 +19,7 @@
                             <img class="w-100 h-100" src="{{product_obj.image2.url}}" alt="Image">
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                    <a class="carousel-control-prev " href="#product-carousel" data-slide="prev">
                         <i class="fa fa-2x fa-angle-left text-dark"  style="color:#000000;"> </i>
                     </a>
                     <a class="carousel-control-next" href="#product-carousel" data-slide="next">
@@ -52,8 +52,13 @@
                     </form>
                 </div>
                 <div class="d-flex align-items-center mb-4 pt-2">
-                    <a href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+product+on+URL:+{{request.build_absolute_uri}}" class="btn btn-primary px-3"><i class="fab fa-whatsapp text-dark mr-1"></i> Inquire On Whatsapp</a>
-                    <button class="btn btn-primary px-3 mx-3"><i class="fa fa-heart text-dark mr-1"></i> Add To Wish List</button>
+                    <a href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+product+on+URL:+{{request.build_absolute_uri}}" class="btn btn-outline-primary px-3"><i class="fab fa-whatsapp  mr-1"></i> Inquire On Whatsapp</a>
+                    <form action="/add-to-wishlist" method="POST">
+					    {%csrf_token%}
+                        <input type="hidden" name="next" value="{{ request.build_absolute_uri }}">     
+                        <input type="hidden" name="product" value="{{ product_obj.id }}">     
+                        <button type="submit" class="btn btn-primary px-3 mx-3"><i class="fa fa-heart text-dark mr-1"></i> Add To Wish List</button>
+                    </form>
                 </div>
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
@@ -120,7 +125,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="/detail?product={{product.id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Add To Cart</a>
+                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Add To WishList</a>
                         </div>
                     </div>
                     {%endfor%}
