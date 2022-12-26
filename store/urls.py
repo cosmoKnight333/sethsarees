@@ -1,6 +1,6 @@
 from django.urls import path
 from .views.home import index,logout
-from .views.category import show_category
+from .views.category import show_category ,search
 from .views.about import show_about
 from .views.contact import Contact_Page
 from .views.login import Login
@@ -13,6 +13,7 @@ from .views.addtowishlist import addtowishlist
 urlpatterns = [
     path('',index,name='homepage'),
     path('category',show_category),
+    path('search',search),
     path('logout',logout),
     path('add-to-wishlist',addtowishlist),
     path('contact',Contact_Page.as_view()),

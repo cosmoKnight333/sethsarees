@@ -5,18 +5,10 @@
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 data-aos="fade-up" class="font-weight-semi-bold text-uppercase mb-3">
-                {%if not category_obj.name and  not query%}
-                 Our Aesthetic Products
+                {%if not query%}
+                 our Aesthetic Products
                 {%endif%}
-                {%if  category_obj.name and not query %}
-                {{category_obj.name}}
-
-                {%endif%}
-                {%if  query %}
                 {{query}}
-
-                {%endif%}
-
                 
             </h1>
             <div class="d-inline-flex">
