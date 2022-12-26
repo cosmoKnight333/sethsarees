@@ -1,6 +1,7 @@
 from django.urls import path
 from .views.home import index,logout
-from .views.category import show_category ,search
+from .views.category import show_category
+from .views.search import search
 from .views.about import show_about
 from .views.contact import Contact_Page
 from .views.login import Login

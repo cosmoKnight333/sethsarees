@@ -12,18 +12,16 @@ data['address']='Ck 13/14 Satti Chautra Chowk Varanasi'
 data['phone_no']='918957451402'
 data['email']='sethsarees@gmail.com'
 
-    
-def show_category(request):
-    categoryID=None
-    products=Product.get_all_products()
+def search(request):
+    query=None
+    query=request.GET['search']
     categories=Category.get_all_categories()
-    categoryID= request.GET.get('category')
-    category_obj= None
-    if categoryID:
-        products=Product.get_all_products_by_categoryid(categoryID)
-        category_obj = Category.objects.get(pk=categoryID)
-    data['products']=products
+    p1=Product.objects.filter(description__icontains=query)
+    p2=Product.objects.filter(name__icontains=query)
+    products=p1.union(p2)
+    data['query']="Your search results for : " +query
     data['categories']=categories
-    data['category_obj']=category_obj
-    return render(request,'category.html',data)
-
+    data['products']=products    
+    return render(request,'search.html',data)
+    
+    
