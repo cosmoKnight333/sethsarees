@@ -173,11 +173,46 @@
                 </div>
                
             </div>
-            <div class="text-center mb-2 pb-2">
-                <a class="btn btn-primary px-4" href="https://www.google.com/search?q=seth%20sarees&oq=seth+sarees&aqs=chrome..69i57j69i59j69i61l3.2280j0j4&sourceid=chrome&ie=UTF-8&tbs=lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsb6kLBLebcYjMVq3ZZjTXegQRwJRQ:1671576707763&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjQ5oW_pIn8AhVywXMBHfXHBNoQvS56BAgeEAE&sa=X&rlst=f#lrd=0x398e2e1ed9ad1ce9:0x752abd6f8a7c826,3,,,&rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6592943,83.033485],[25.2677299,82.87100439999999]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10">Review Us</a>
+            <div class="text-center mb-2">
+                <a href="https://www.google.com/search?q=seth%20sarees&oq=seth+sarees&aqs=chrome..69i57j69i59j69i61l3.2280j0j4&sourceid=chrome&ie=UTF-8&tbs=lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsb6kLBLebcYjMVq3ZZjTXegQRwJRQ:1671576707763&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjQ5oW_pIn8AhVywXMBHfXHBNoQvS56BAgeEAE&sa=X&rlst=f#lrd=0x398e2e1ed9ad1ce9:0x752abd6f8a7c826,3,,,&rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6592943,83.033485],[25.2677299,82.87100439999999]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10"  class="btn btn-primary "> <span class="pl-1"><i class="fab fa-google mr-1" ></i></span>Review Us</a>
+            
             </div> 
             <div>
-                <div class="tagembed-container" style=" width:100%;height:100%;overflow: auto;"><div class="tagembed-socialwall" data-wall-id="80246" view-url="https://widget.tagembed.com/80246">  </div> <script src="//widget.tagembed.com/embed.min.js" type="text/javascript"></script></div>
+           <!-- Products Start -->
+    <div class="container-fluid py-5">
+        
+        <div class="row px-xl-5">
+            <div class="col">
+                <div class="owl-carousel related-carousel">
+                    {%for review in reviews%}
+                    <div class="card product-item border-0" style="">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-2 "style="color:red;">
+                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-star text-primary mr-1"></i></a>
+                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-star text-primary mr-1"></i></a>
+                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-star text-primary mr-1"></i></a>
+                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-star text-primary mr-1"></i></a>
+                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-star text-primary mr-1"></i></a>
+
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 ">
+                            <h6 class="p-0 m-0 mt-1">{{review.reviewer_name}}</h6>
+                            <div class=" d-flex justify-content-center px-2 pt-1">
+                                {{review.description|truncatechars:300}}
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between border">
+                            <a href="{{review.back_link}}" class="btn btn-sm text-dark p-0"><i class="fab fa-google text-primary mr-1"></i>View Detail</a>
+                            <a href="https://www.google.com/search?q=seth%20sarees&oq=seth+sarees&aqs=chrome..69i57j69i59j69i61l3.2280j0j4&sourceid=chrome&ie=UTF-8&tbs=lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsb6kLBLebcYjMVq3ZZjTXegQRwJRQ:1671576707763&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjQ5oW_pIn8AhVywXMBHfXHBNoQvS56BAgeEAE&sa=X&rlst=f#lrd=0x398e2e1ed9ad1ce9:0x752abd6f8a7c826,3,,,&rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6592943,83.033485],[25.2677299,82.87100439999999]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10" class="btn btn-sm text-dark p-0"><i class="fab fa-plus text-primary mr-1"></i>Add Review</a>
+                        </div>
+                    </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Products End -->
+
             </div>
         </div>
         <!-- Review End -->

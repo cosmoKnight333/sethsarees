@@ -5,6 +5,7 @@ from .models.corousel import Corousel
 from .models.banarasphoto import BanarasPhoto
 from .models.customer import Customer
 from .models.contact import Contact
+from .models.review import Review
 
 # Register your models here.
 
@@ -28,4 +29,5 @@ admin.site.register(Corousel,AdminCorousel)
 admin.site.register(BanarasPhoto,AdminBanarasPhoto)
 admin.site.register(Customer)
 admin.site.register(Contact)
+admin.site.register(Review)
 
