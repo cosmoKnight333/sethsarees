@@ -23,3 +23,5 @@ class Customer(models.Model):
             return Customer.objects.get(phone_number=phone_number)
         except:
             return False
+    def __str__(self):
+        return self.email

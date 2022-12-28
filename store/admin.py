@@ -6,6 +6,7 @@ from .models.banarasphoto import BanarasPhoto
 from .models.customer import Customer
 from .models.contact import Contact
 from .models.review import Review
+from .models.wishlist import Wishlist
 
 # Register your models here.
 
@@ -19,6 +20,13 @@ class AdminCorousel(admin.ModelAdmin):
 
 class AdminCategory(admin.ModelAdmin):
     list_display = ['name']
+    
+class AdminProduct(admin.ModelAdmin):
+    list_display = ['name']
+
+
+class AdminCustomer(admin.ModelAdmin):
+    list_display = ['email']
 
 class AdminBanarasPhoto(admin.ModelAdmin):
     list_display = ['name']
@@ -30,4 +38,5 @@ admin.site.register(BanarasPhoto,AdminBanarasPhoto)
 admin.site.register(Customer)
 admin.site.register(Contact)
 admin.site.register(Review)
+admin.site.register(Wishlist)
 

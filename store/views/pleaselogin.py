@@ -14,10 +14,10 @@ data['email']='sethsarees@gmail.com'
 categories=Category.get_all_categories()
 data['categories']=categories
 
-def show_about(request):
+def pleaselogin(request):
     customer_id=request.session.get('customer')
     if customer_id:
         customer=Customer.objects.get(id=customer_id)
         wishlist_len=len(Wishlist.objects.filter(customer=customer_id))
         data['wishlist_len']=wishlist_len   
-    return render(request,'about.html',data)
+    return render(request,'pleaselogin.html',data)

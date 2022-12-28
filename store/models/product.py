@@ -27,4 +27,5 @@ class Product(models.Model):
             return Product.objects.filter(category=category_id)
         else:
             Product.objects.all()
-    
+    def __str__(self):
+        return self.name 

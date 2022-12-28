@@ -6,6 +6,7 @@ from store.models.corousel import Corousel
 from store.models.banarasphoto import BanarasPhoto
 from store.models.customer import Customer
 from store.models.contact import Contact
+from store.models.wishlist import Wishlist
 
 data={}
 data['address']='Ck 13/14 Satti Chautra Chowk Varanasi'
@@ -16,7 +17,16 @@ data['categories']=categories
 
 class Contact_Page(View):
     def get(self,request):
+        customer_id=request.session.get('customer')
+        if customer_id:
+            customer=Customer.objects.get(id=customer_id)
+            wishlist_len=len(Wishlist.objects.filter(customer=customer_id))
+            data['wishlist_len']=wishlist_len
+            
+
         return render(request,'contact.html',data)
+
+
     def post(self,request):
         name = request.POST.get('name')   
         whatsapp_number = request.POST.get('whatsapp_number')

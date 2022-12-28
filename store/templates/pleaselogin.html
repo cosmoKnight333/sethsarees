@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <div class="container-fluid  mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center  m-5 p-5" style="min-height: 500px;border:10px solid #c5837c;border-radius:40px;">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3"><a href="/login" class="btn btn-outline-primary px-3">Please Login</a>
+                    </h1>
+            <div class="d-inline-flex text-center">
+                <p class="m-0">
+                    Please Login to see your Wishlist. <br> New User Must <a href="/signup"> Signup</a>.
+                </p>
+            
+            </div>
+        </div>
+    </div>
+
+    {% endblock content%}
+
+    {% block category_nav %}
+    <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
+                    
+    {% endblock category_nav %}

@@ -6,6 +6,7 @@ from store.models.category import Category
 from store.models.corousel import Corousel
 from store.models.banarasphoto import BanarasPhoto
 from store.models.customer import Customer
+from store.models.wishlist import Wishlist
 
 data={}
 data['address']='Ck 13/14 Satti Chautra Chowk Varanasi'
@@ -14,6 +15,12 @@ data['email']='sethsarees@gmail.com'
 
     
 def show_category(request):
+    customer_id=request.session.get('customer')
+    if customer_id:
+        customer=Customer.objects.get(id=customer_id)
+        wishlist_len=len(Wishlist.objects.filter(customer=customer_id))
+        data['wishlist_len']=wishlist_len
+        
     categoryID=None
     products=Product.get_all_products()
     categories=Category.get_all_categories()

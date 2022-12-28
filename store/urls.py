@@ -8,15 +8,21 @@ from .views.login import Login
 from .views.signup import Signup
 from .views.detail import Detail
 from .views.addtowishlist import addtowishlist
+from .views.addtowishlist import removeitem
+from .views.wishlist import show_wishlist
+from .views.pleaselogin import pleaselogin
 
 
 
 urlpatterns = [
     path('',index,name='homepage'),
     path('category',show_category),
+    path('pleaselogin',pleaselogin,name='pleaselogin'),
     path('search',search),
     path('logout',logout),
+    path('wishlist',show_wishlist),
     path('add-to-wishlist',addtowishlist),
+    path('remove-item',removeitem),
     path('contact',Contact_Page.as_view()),
     path('about',show_about),
     path('detail',Detail.as_view()),

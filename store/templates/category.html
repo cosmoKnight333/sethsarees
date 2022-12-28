@@ -3,22 +3,14 @@
 {% block content %}
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 data-aos="fade-up" class="font-weight-semi-bold text-uppercase mb-3">
-                {%if not category_obj.name and  not query%}
-                 Our Aesthetic Products
+        <div class="d-flex flex-column justify-content-center align-items-center  text-center" style="min-height: 300px">
+            <h2 data-aos="fade-up" class="font-weight-semi-bold  mb-3">
+                {%if not category_obj.name%}
+                 Our Aesthetic Collection
                 {%endif%}
-                {%if  category_obj.name and not query %}
                 {{category_obj.name}}
-
-                {%endif%}
-                {%if  query %}
-                {{query}}
-
-                {%endif%}
-
                 
-            </h1>
+            </h2>
             <div class="d-inline-flex">
                 <p class="m-0"><a href="/">Home</a></p>
                 <p class="m-0 px-2">-</p>
@@ -52,7 +44,13 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="/detail?product={{product.id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Add To Cart</a>
+                                
+                                <form action="/add-to-wishlist" method="POST">
+                                        {%csrf_token%}
+                                        <input type="hidden" name="next" value="{{ request.build_absolute_uri }}">     
+                                        <input type="hidden" name="product" value="{{ product.id }}">     
+                                        <button type="submit" class="btn btn-sm text-dark p-0"><i class="fa fa-heart text-primary mr-1"></i> Add To Wish List</button>
+                                </form>
                         </div>
                     </div>
                 </div>
