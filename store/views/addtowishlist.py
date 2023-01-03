@@ -28,7 +28,11 @@ def addtowishlist(request):
             wishlist=Wishlist(customer=customer,
                             product=product)
             wishlist.save()
-        return HttpResponseRedirect(next)
+            return HttpResponseRedirect(next)
+        else :
+            print('product already in cart')
+            return HttpResponseRedirect(next)
+
     else :
         return redirect('pleaselogin')
         

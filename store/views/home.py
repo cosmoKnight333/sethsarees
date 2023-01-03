@@ -12,8 +12,9 @@ data={}
 data['address']='Ck 13/14 Satti Chautra Chowk Varanasi'
 data['phone_no']='918957451402'
 data['email']='sethsarees@gmail.com'
+wishlist_len=0
+data['wishlist_len']=wishlist_len
 
- 
 def index(request):
     
     customer_id=request.session.get('customer')
@@ -39,6 +40,7 @@ def index(request):
     return render(request,'index.html',data)   
 
 def logout(request):
+    wishlist_len=0
     request.session.clear()
-    return render(request,'index.html',data)   
+    return redirect('homepage')   
     

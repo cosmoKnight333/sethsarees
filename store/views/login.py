@@ -31,7 +31,6 @@ class Login(View):
                     request.session['customer']=customer.id
                     request.session['customer_first_name']=customer.first_name
                     request.session['customer_phone_number']=customer.phone_number
-                    
                     return redirect('homepage')
                 else :
                     error_msg="Enter Valid Password" 

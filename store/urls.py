@@ -11,7 +11,7 @@ from .views.addtowishlist import addtowishlist
 from .views.addtowishlist import removeitem
 from .views.wishlist import show_wishlist
 from .views.pleaselogin import pleaselogin
-
+from .views.show_sent_list import show_sent_list
 
 
 urlpatterns = [
@@ -28,5 +28,6 @@ urlpatterns = [
     path('detail',Detail.as_view()),
     path('login',Login.as_view(),name='login'),
     path('signup',Signup.as_view(),name='signup'),
+    path('show-sent-list',show_sent_list),
 
 ]

@@ -5,14 +5,9 @@
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h2 class="font-weight-semi-bold  mb-3">Your WishList</h2>
+            <h2 class="font-weight-semi-bold  mb-3">Wishlist of  :&nbsp {{customer_to_show_name}} </h2>
             <div class="d-flex flex-column text-center align-items-center justify-content-center ">
                 <p class="m-0"><a href="/category">Explore Our Range</a></p>
-                
-                <p class="m-0"> 
-                    
-                    <a href="https://wa.me/{{phone_no}}?text= Hey I am {{customer_name}} and I have prepared my list on URL: {{ request.get_host }}/show-sent-list?customer_id={{request.session.customer}} kindly check it">Share List On Whatsapp</a>
-                </p>
             </div>
         </div>
     </div>
@@ -28,7 +23,6 @@
                     <thead class="bg-secondary text-dark">
                         <tr>
                             <th colspan="2">Products {{wishlist.length}}</th>
-                            <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody class="align-middle">
@@ -36,12 +30,7 @@
                         <tr>
                             <td class=""><a href="/detail?product={{entry.product.id}}"><img src="{{entry.product.image.url}}" alt="" style="width: 100px;border-radius: 10%;"  class="m-2"></a> </td>
                             <td class="text-center pt-5"><a href="/detail?product={{entry.product.id}}"> <a href="/detail?product={{entry.product.id}}"><p> {{entry.product.name}}</p></a></td>
-                            <td class="align-middle"><form action="/remove-item" method="POST">
-                                {%csrf_token%}
-                                <input type="hidden" name="next" value="{{ request.build_absolute_uri }}">     
-                                <input type="hidden" name="product" value="{{ entry.product.id }}">     
-                                <button type="submit" method="POST" class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></form>
-                            </td>
+                            
                         </tr>
                        
                         {%endfor%}
