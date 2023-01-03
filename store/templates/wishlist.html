@@ -17,7 +17,6 @@
         </div>
     </div>
     <!-- Page Header End -->
-    <p class="m-0 px-2">-</p>
 
 
     <!-- Cart Start -->
@@ -35,7 +34,7 @@
                         {%for entry in wishlist%}
                         <tr>
                             <td class=""><a href="/detail?product={{entry.product.id}}"><img src="{{entry.product.image.url}}" alt="" style="width: 100px;border-radius: 10%;"  class="m-2"></a> </td>
-                            <td class="text-center pt-5"><a href="/detail?product={{entry.product.id}}"> <a href="/detail?product={{entry.product.id}}"><p> {{entry.product.name}}</p></a></td>
+                            <td class="text-center pt-5" style="vertical-align: middle;"><a href="/detail?product={{entry.product.id}}"> <a href="/detail?product={{entry.product.id}}"><p> {{entry.product.name}}</p></a></td>
                             <td class="align-middle"><form action="/remove-item" method="POST">
                                 {%csrf_token%}
                                 <input type="hidden" name="next" value="{{ request.build_absolute_uri }}">     

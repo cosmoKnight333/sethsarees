@@ -12,8 +12,6 @@ data={}
 data['address']='Ck 13/14 Satti Chautra Chowk Varanasi'
 data['phone_no']='918957451402'
 data['email']='sethsarees@gmail.com'
-
- 
 def addtowishlist(request):
     customer_id=request.session.get('customer')
     if customer_id:
