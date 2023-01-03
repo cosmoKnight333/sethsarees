@@ -79,7 +79,7 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="/wishlist" class="btn border">
+                <a href="/wishlist?next={{ request.get_full_path|urlencode }}" class="btn border">
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">{{wishlist_len}}</span>
                 </a>

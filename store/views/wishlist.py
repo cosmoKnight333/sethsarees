@@ -25,5 +25,7 @@ def show_wishlist(request):
         data['wishlist_len']=wishlist_len
         return render(request,'wishlist.html',data)
     else :
-        return redirect('pleaselogin')     
+        next = request.GET.get('next', '/')
+        url='login?next='+next
+        return redirect(url)     
         

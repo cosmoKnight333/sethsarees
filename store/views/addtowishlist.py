@@ -14,11 +14,12 @@ data['phone_no']='918957451402'
 data['email']='sethsarees@gmail.com'
 def addtowishlist(request):
     customer_id=request.session.get('customer')
+    next = request.POST.get('next', '/')
+
     if customer_id:
         product_id=request.POST.get('product')
         wishlist_len=len(Wishlist.objects.filter(customer=customer_id))
         data['wishlist_len']=wishlist_len
-        next = request.POST.get('next', '/')
         product=Product.objects.get(id=product_id)
         customer=Customer.objects.get(id=customer_id)
         flag=len(Wishlist.objects.filter(customer=customer_id).filter(product=product_id))
@@ -32,7 +33,8 @@ def addtowishlist(request):
             return HttpResponseRedirect(next)
 
     else :
-        return redirect('pleaselogin')
+        url='/login?next='+next
+        return redirect(url)
         
 
 def removeitem(request):
