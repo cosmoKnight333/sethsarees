@@ -5,10 +5,13 @@ from store.models.customer import Customer
 data={}
 class Login(View):
     def get(self,request):
+        next=request.GET.get('next')
+        data['next']=next
         return render(request,'login.html',data)     
     def post(self,request):
         email_phone_number = request.POST.get('phone_number')   
         password = request.POST.get('password')   
+        next = request.POST.get('next')
         customer=Customer.get_customer_by_email(email_phone_number)
         error_msg= None
         if customer:
@@ -17,7 +20,7 @@ class Login(View):
                 request.session['customer']=customer.id
                 request.session['customer_first_name']=customer.first_name
                 request.session['customer_phone_number']=customer.phone_number
-                return redirect('homepage')
+                return redirect(next)
             else :
                 error_msg="Enter Valid Password"
                 data['error_msg']=error_msg
@@ -31,7 +34,7 @@ class Login(View):
                     request.session['customer']=customer.id
                     request.session['customer_first_name']=customer.first_name
                     request.session['customer_phone_number']=customer.phone_number
-                    return redirect('homepage')
+                    return redirect('next')
                 else :
                     error_msg="Enter Valid Password" 
                     data['error_msg']=error_msg       

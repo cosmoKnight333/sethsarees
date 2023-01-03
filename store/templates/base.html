@@ -144,10 +144,10 @@
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             {%if not request.session.customer%}
-                            <a href="/login" class="nav-item nav-link">Login</a>
+                            <a href="/login?next={{ request.get_full_path|urlencode }}" class="nav-item nav-link">Login</a>
                             <a href="/signup" class="nav-item nav-link">Sign Up</a>
                             {%else%}
-                            <a href="/logout" class="nav-item nav-link">Logout</a>
+                            <a href="/logout?next={{ request.get_full_path|urlencode }}" class="nav-item nav-link">Logout</a>
 
                             {%endif%}
                         </div>

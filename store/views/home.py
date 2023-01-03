@@ -41,6 +41,7 @@ def index(request):
 
 def logout(request):
     wishlist_len=0
+    next=request.GET.get('next')
     request.session.clear()
-    return redirect('homepage')   
+    return redirect(next)   
     
