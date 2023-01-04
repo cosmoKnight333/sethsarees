@@ -18,11 +18,14 @@ data['categories']=categories
 class Contact_Page(View):
     def get(self,request):
         customer_id=request.session.get('customer')
+        wishlist_len=0
         if customer_id:
             customer=Customer.objects.get(id=customer_id)
             wishlist_len=len(Wishlist.objects.filter(customer=customer_id))
-            data['wishlist_len']=wishlist_len
-            
+        else:
+            print("nothing")
+        data['wishlist_len']=wishlist_len
+                
 
         return render(request,'contact.html',data)
 

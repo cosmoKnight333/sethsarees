@@ -16,8 +16,12 @@ data['categories']=categories
 
 def show_about(request):
     customer_id=request.session.get('customer')
+    wishlist_len=0
     if customer_id:
         customer=Customer.objects.get(id=customer_id)
         wishlist_len=len(Wishlist.objects.filter(customer=customer_id))
-        data['wishlist_len']=wishlist_len   
+    else:
+        print("nothing")
+    data['wishlist_len']=wishlist_len
+   
     return render(request,'about.html',data)

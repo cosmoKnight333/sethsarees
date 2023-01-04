@@ -41,6 +41,7 @@ def index(request):
 
 def logout(request):
     wishlist_len=0
+    data['wishlist_len']=wishlist_len
     next=request.GET.get('next')
     request.session.clear()
     return redirect(next)   
