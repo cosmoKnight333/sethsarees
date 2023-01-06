@@ -12,9 +12,9 @@
 <link rel="manifest" href="{% static '.login/login_vendor/site.webmanifest' %}">
 
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{%static './login/login_vendor/bootstrap/css/bootstrap.min.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static './login/login_vendor/bootstrap/css/bootstrap.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{%static './login/login_fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static './login/login_fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 <!--===============================================================================================-->
 	<!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -60,7 +60,6 @@
 						<span class="label-input100">Email or Whatsapp Number</span>
 					</div>
 					<input type="hidden" id="custId" name="next" value="{{next}}">
-					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<input class="input100" type="password" name="password">
 						<span class="focus-input100"></span>
@@ -99,7 +98,7 @@
 	<script src="{% static './login/login_vendor/bootstrap/js/popper.js' %}"></script>
 	<script src="{% static './login/login_vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static './login/login_vendor/select2/select2.min.js'%}"></script>
+	<script src="{% static './login/login_vendor/select2/select2.min.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static './login/login_vendor/daterangepicker/moment.min.js'%}"></script>
 	<script src="{% static './login/login_vendor/daterangepicker/daterangepicker.js' %}"></script>
