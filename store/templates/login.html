@@ -1,5 +1,6 @@
-<!DOCTYPE html>
 {% load static %}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Login</title>
@@ -7,9 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 <link rel="icon" sizes="180x180" href="{% static './store/apple-touch-icon.png' %}">
-<link rel="icon" type="image/png" sizes="32x32" href="{% static './store/favicon-32x32.png"' %} ">
 <link rel="icon" type="image/png" sizes="16x16" href="{% static './store/favicon-16x16.png' %} ">
-<link rel="manifest" href="{% static '.login/login_vendor/site.webmanifest' %}">
 
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static './login/login_vendor/bootstrap/css/bootstrap.min.css' %}">
@@ -38,55 +37,50 @@
 <!--===============================================================================================-->
 </head>
 <body style="background-color: #666666;">
-	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100">
+		  	<div class="wrap-login100">
 				<form action="/login" method="post" class="login100-form validate-form">
 					{%csrf_token%}
 					<span class="login100-form-title p-b-43">
 						Login
 					</span>
 					{%if error_msg%}
-					<div class="alert alert-danger text-center"  role="alert">
-					  <h4 class="alert-heading">{{error_msg}}</h4>
-					  <p></p>
-					  <p class="mb-0"></p>
+					<div class="alert alert-danger text-center "   role="alert">
+						<h4 class="alert-heading">{{error_msg}}</h4>
+						<p></p>
+						<p class="mb-0"></p>
 					</div>
 					{%endif%}
-					<div class="wrap-input100 validate-input" data-validate="Whatsapp Number or Email is required">
-						<input class="input100" type="text" name="phone_number">
+					<div class="wrap-input100 validate-input"  data-validate="Whatsapp Number or Email is required">
+						<input class="input100" type="text" name="phone_number" autocomplete="off">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Email or Whatsapp Number</span>
-					</div>
-					<input type="hidden" id="custId" name="next" value="{{next}}">
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="password">
+					  </div>
+					  
+					  <div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="password" autocomplete="off">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
-					</div>
-
-				
+					  </div>
+					<input type="hidden" id="custId" name="next" value="{{next}}">
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Login
+						Login
 						</button>
-					</form>
-
-						<form action="/signup">
-							<button class="btn-login mt-4">
-								New Here? Register to Seth Sarees.	
-							</button>
-						</form>
-					</div>
-				<div class="login100-more" style="background-image: url({% static './login/login_images/bg-01.jpg' %});">
-                </div>
+				</form>
+				<form action="/signup">
+					<button class="btn-login mt-4">
+					New Here? Register to Seth Sarees.	
+					</button>
+				</form>
 			</div>
+			<div class="login100-more" style="background-image: url({% static './login/login_images/bg-01.jpg' %});">
+			</div>
+		  </div>
 		</div>
-	</div>
-	
-	
+	  </div>
 
 	
 	

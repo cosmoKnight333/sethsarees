@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
     <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column justify-content-center align-items-center  text-center" style="min-height: 300px">
+    <div class="container-fluid bg-secondary " style="padding-top:31px;padding-bottom:30px">
+        <div class="d-flex  flex-column justify-content-center align-items-center  text-center" style="min-height: 300px">
             <h2 data-aos="fade-up" class="font-weight-semi-bold  mb-3">
                 {%if not category_obj.name%}
                  Our Aesthetic Collection
@@ -14,7 +14,7 @@
             <div class="d-inline-flex">
                 <p class="m-0"><a href="/">Home</a></p>
                 <p class="m-0 px-2">-</p>
-                <p class="m-0"><a href="/category">Shop</a></p>
+                <p class="m-0"><a href="/wishlist">Wishlist</a></p>
             </div>
         </div>
     </div>
@@ -66,6 +66,6 @@
 {% endblock content%}
 
 {% block category_nav %}
-<nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
+<nav class="collapse show position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                 
 {% endblock category_nav %}

@@ -127,9 +127,9 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="/" class="nav-item nav-link active">Home</a>
-                            <a href="/about" class="nav-item nav-link">About</a>
-                            <a href="/category" class="nav-item nav-link">Our Sarees</a>
+                            <a href="/" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
+                            <a href="/about" class="nav-item nav-link {% if request.path == '/about' %}active{% endif %}">About</a>
+                            <a href="/category" class="nav-item nav-link {% if request.path == '/category' %}active{% endif %}">Our Sarees</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -140,7 +140,7 @@
                                 
                                 </div>
                             </div>
-                            <a href="/contact" class="nav-item nav-link">Contact</a>
+                            <a href="/contact" class="nav-item nav-link {% if request.path == '/contact' %}active{% endif %}">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             {%if not request.session.customer%}
