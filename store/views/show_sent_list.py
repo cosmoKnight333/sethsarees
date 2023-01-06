@@ -1,9 +1,5 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from store.models.product import Product
-from store.models.category import Category
-from store.models.corousel import Corousel
-from store.models.banarasphoto import BanarasPhoto
 from store.models.customer import Customer
 from store.models.wishlist import Wishlist
 from .data import initial_data
@@ -18,6 +14,7 @@ def show_sent_list(request):
         data['wishlist_len']=wishlist_len
     else :
         data['wishlist_len']=0
+    error_msg=None
     error_msg=request.GET.get('error_msg')
     data['error_msg']=error_msg
 

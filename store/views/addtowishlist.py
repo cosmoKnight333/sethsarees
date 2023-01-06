@@ -14,7 +14,7 @@ def addtowishlist(request):
 
     if customer_id:
         product_id=request.POST.get('product')
-        wishlist_len=len(Wishlist.objects.filter(customer=customer_id))
+        wishlist_ylen=len(Wishlist.objects.filter(customer=customer_id))
         product=Product.objects.get(id=product_id)
         customer=Customer.objects.get(id=customer_id)
         flag=len(Wishlist.objects.filter(customer=customer_id).filter(product=product_id))
@@ -28,8 +28,8 @@ def addtowishlist(request):
             return HttpResponseRedirect(next)
 
     else :
-        url='/login?next='+next
-        return redirect(url)
+        error_msg='Add products to your wishlist - Login Now!'
+        return redirect(next+'&&error_msg='+error_msg)
         
 
 def removeitem(request):

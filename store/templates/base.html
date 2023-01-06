@@ -79,7 +79,7 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="/wishlist?next={{ request.get_full_path|urlencode }}" class="btn border">
+                <a href="/wishlist?next={{ request.path }}" class="btn border">
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">{{wishlist_len}}</span>
                 </a>
@@ -167,7 +167,6 @@
     </div>
     <!-- Navbar End -->
     <!-- login start -->
- 
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -190,11 +189,11 @@
 					</div>
 					{%endif%}
                             <div class="control-group">
-                                <input type="email" class="form-control m-2 p-3" id="email" name="phone_number" placeholder="Your Email or Whatsapp Number"
+                                <input type="email" class="form-control m-2 p-3" id="email" name="phone_number" placeholder="Your Email or WhatsApp Number"
                                     required="required" data-validation-required-message="Please enter your email" />
                                 <p class="help-block text-danger"></p>
                             </div>
-                            <input type="hidden" id="custId" name="next" value="{{ request.get_full_path }}">
+                            <input type="hidden" id="custId" name="next" value="{{ request.path }}">
                             <div class="control-group">
                                 <input type="password" class="form-control m-2 p-3" id="password" name="password" placeholder="Password"
                                     required="required" data-validation-required-message="Please enter a Password" />
@@ -294,7 +293,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-3" >
-                        <h5 class="font-weight-bold text-dark mb-4">Connect-Us on Whatsapp</h5>
+                        <h5 class="font-weight-bold text-dark mb-4">Connect-Us on WhatsApp</h5>
                         <div class="d-flex flex-column ">
         
                             <p class=text-muted>Chat with us on Whatsapp to get your queries resolved.We provide 24x7 support.</p>

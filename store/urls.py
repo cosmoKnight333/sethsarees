@@ -25,7 +25,7 @@ urlpatterns = [
     path('remove-item',removeitem),
     path('contact',Contact_Page.as_view()),
     path('about',show_about),
-    path('detail',Detail.as_view()),
+    path('detail',Detail.as_view(),name="detail"),
     path('login',Login.as_view(),name='login'),
     path('signup',Signup.as_view(),name='signup'),
     path('show-sent-list',show_sent_list),

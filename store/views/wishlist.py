@@ -1,9 +1,5 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from store.models.product import Product
-from store.models.category import Category
-from store.models.corousel import Corousel
-from store.models.banarasphoto import BanarasPhoto
 from store.models.customer import Customer
 from store.models.wishlist import Wishlist
 from .data import initial_data 
@@ -20,6 +16,7 @@ def show_wishlist(request):
         return render(request,'wishlist.html',data)
     else :
         next = request.GET.get('next', '/')
-        url='login?next='+next
-        return redirect(url)     
-        
+        error_msg=None
+        error_msg='Get access to your wishlist - Login Now!'
+        return redirect(next+'?error_msg='+error_msg)
+   

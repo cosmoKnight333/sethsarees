@@ -3,7 +3,6 @@ from django.views import View
 from store.models.product import Product
 from store.models.category import Category
 from store.models.corousel import Corousel
-from store.models.banarasphoto import BanarasPhoto
 from store.models.customer import Customer
 from store.models.review import Review
 from store.models.wishlist import Wishlist
@@ -18,7 +17,10 @@ def index(request):
     else:
         print("nothing")
     data['wishlist_len']=wishlist_len
-    
+    error_msg=None
+    error_msg = request.GET.get('error_msg')
+    print(error_msg)
+    data['error_msg'] = error_msg
     products=Product.get_all_products()
     categories=Category.get_all_categories()
     corousels=Corousel.get_all_corousels()

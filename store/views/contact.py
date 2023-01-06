@@ -1,9 +1,5 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from store.models.product import Product
-from store.models.category import Category
-from store.models.corousel import Corousel
-from store.models.banarasphoto import BanarasPhoto
 from store.models.customer import Customer
 from store.models.contact import Contact
 from store.models.wishlist import Wishlist
@@ -16,10 +12,9 @@ class Contact_Page(View):
         if customer_id:
             customer = Customer.objects.get(id=customer_id)
             data['wishlist_len'] = len(Wishlist.objects.filter(customer=customer_id))
-
+        error_msg=None
         error_msg = request.GET.get('error_msg')
-        if error_msg:
-            data['error_msg'] = error_msg
+        data['error_msg'] = error_msg
 
         return render(request, 'contact.html', data)
 
