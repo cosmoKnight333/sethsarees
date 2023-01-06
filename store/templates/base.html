@@ -144,9 +144,15 @@
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             {%if not request.session.customer%}
-                            <a href="/login?next={{ request.get_full_path|urlencode }}" class="nav-item nav-link">Login</a>
-                            <a href="/signup" class="nav-item nav-link">Sign Up</a>
+                            <span class="nav-item nav-link m-0 p-0">
+                            <button type="button" class="btn text-dark btn-transparent nav-item nav-link" data-toggle="modal" data-target="#loginModal">Login
+                            </button></span>
+                            <span class="nav-item nav-link m-0 p-0">
+                            <button type="button" class="btn text-dark btn-transparent nav-item nav-link" data-toggle="modal" data-target="#loginModalsignup">Sign Up
+                            </button>       </span>  
+                            
                             {%else%}
+
                             <a href="/logout?next={{ request.get_full_path|urlencode }}" class="nav-item nav-link">Logout</a>
 
                             {%endif%}
@@ -160,6 +166,93 @@
         </div>
     </div>
     <!-- Navbar End -->
+    <!-- login start -->
+ 
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <!-- Login form goes here -->
+            <form  action="/login" method="post" name="sentMessage"  novalidate="novalidate">
+					{%csrf_token%}
+
+					{%if error_msg%}
+					<div class="alert alert-danger text-center "   role="alert">
+						<h4 class="alert-heading">{{error_msg}}</h4>
+						<p></p>
+						<p class="mb-0"></p>
+					</div>
+					{%endif%}
+                            <div class="control-group">
+                                <input type="email" class="form-control m-2 p-3" id="email" name="phone_number" placeholder="Your Email or Whatsapp Number"
+                                    required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <input type="hidden" id="custId" name="next" value="{{ request.get_full_path }}">
+                            <div class="control-group">
+                                <input type="password" class="form-control m-2 p-3" id="password" name="password" placeholder="Password"
+                                    required="required" data-validation-required-message="Please enter a Password" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button  class="btn btn-primary">Submit</button>
+            </form>
+            
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- login end -->
+
+
+    <!-- signup start -->
+    <div class="modal fade" id="loginModalsignup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sign Up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Login form goes here -->
+               <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                              <div class="control-group">
+                                  <input type="email" class="form-control m-2 p-3" id="email" placeholder="Your Email"
+                                      required="required" data-validation-required-message="Please enter your email" />
+                                  <p class="help-block text-danger"></p>
+                              </div>
+                              <div class="control-group">
+                                  <input type="password" class="form-control m-2 p-3" id="password" placeholder="Password"
+                                      required="required" data-validation-required-message="Please enter a Password" />
+                                  <p class="help-block text-danger"></p>
+                              </div>
+                              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    <!-- signup end -->
+
+
+
         {%block content%}
 
         {%endblock%}
@@ -269,6 +362,13 @@
         AOS.init({});
     </script>
 
+    {% if error_msg %}
+    <script>
+        $(document).ready(function() {
+            $('#loginModal').modal('show');
+        });
+    </script>
+    {% endif %}
 
 
 </body>

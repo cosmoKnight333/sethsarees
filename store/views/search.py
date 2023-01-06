@@ -8,20 +8,19 @@ from store.models.banarasphoto import BanarasPhoto
 from store.models.customer import Customer
 from store.models.wishlist import Wishlist
 from django.db.models import Q
-
-data={}
-data['address']='Ck 13/14 Satti Chautra Chowk Varanasi'
-data['phone_no']='918957451402'
-data['email']='sethsarees@gmail.com'
-
+from .data import initial_data
 
 def search(request):
+    data=initial_data
     customer_id = request.session.get('customer')
     wishlist_len = 0
     if customer_id:
         customer = Customer.objects.get(id=customer_id)
         wishlist_len = len(Wishlist.objects.filter(customer=customer_id))
     data['wishlist_len'] = wishlist_len
+    error_msg=request.GET.get('error_msg')
+    data['error_msg']=error_msg
+
     query = request.GET['search']
     categories = Category.get_all_categories()
     products = Product.objects.filter(

@@ -7,16 +7,9 @@ from store.models.banarasphoto import BanarasPhoto
 from store.models.customer import Customer
 from store.models.review import Review
 from store.models.wishlist import Wishlist
-
-data={}
-data['address']='Ck 13/14 Satti Chautra Chowk Varanasi'
-data['phone_no']='918957451402'
-data['email']='sethsarees@gmail.com'
-wishlist_len=0
-data['wishlist_len']=wishlist_len
-
+from .data import initial_data
 def index(request):
-    
+    data=initial_data
     customer_id=request.session.get('customer')
     wishlist_len=0
     if customer_id:
@@ -29,19 +22,14 @@ def index(request):
     products=Product.get_all_products()
     categories=Category.get_all_categories()
     corousels=Corousel.get_all_corousels()
-    banaras_photos=BanarasPhoto.get_all_banaras_photos()
     reviews=Review.get_all_reviews()
     data['products']=products
     data['categories']=categories
     data['corousels']=corousels
-    data['banaras_photos']=banaras_photos
     data['reviews']=reviews
-
     return render(request,'index.html',data)   
 
 def logout(request):
-    wishlist_len=0
-    data['wishlist_len']=wishlist_len
     next=request.GET.get('next')
     request.session.clear()
     return redirect(next)   
