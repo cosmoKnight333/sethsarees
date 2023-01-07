@@ -3,6 +3,22 @@ from django.views import View
 from store.models.customer import Customer
 from store.models.wishlist import Wishlist
 from .data import initial_data 
+from urllib.parse import urlencode, urlparse
+from urllib.parse import  parse_qs
+
+def modify_url(url, param, value):
+    # Parse the URL and retrieve the query string
+    parsed_url = urlparse(url)
+    query_dict = parse_qs(parsed_url.query)
+    
+    # Update the value of the parameter in the query string
+    query_dict[param] = value
+    
+    # Rebuild the URL with the updated query string
+    new_query_string = urlencode(query_dict, doseq=True)
+    modified_url = parsed_url._replace(query=new_query_string).geturl()
+    
+    return modified_url
 def show_wishlist(request):
     data=initial_data
     customer_id=request.session.get('customer')
@@ -16,7 +32,8 @@ def show_wishlist(request):
         return render(request,'wishlist.html',data)
     else :
         next = request.GET.get('next', '/')
+        print(next,"sala betichod")
         error_msg=None
         error_msg='Get access to your wishlist - Login Now!'
-        return redirect(next+'?error_msg='+error_msg)
+        return redirect(modify_url(next,'error_msg',error_msg))
    
