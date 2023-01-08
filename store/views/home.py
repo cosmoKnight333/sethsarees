@@ -30,7 +30,6 @@ def index(request):
     data['wishlist_len']=wishlist_len
     error_msg=None
     error_msg = request.GET.get('error_msg')
-    print(error_msg)
     data['error_msg'] = error_msg
     products=Product.get_all_products()
     categories=Category.get_all_categories()
@@ -45,5 +44,6 @@ def index(request):
 def logout(request):
     next=request.GET.get('next')
     request.session.clear()
+    
     return redirect(next)   
     

@@ -4,6 +4,7 @@ from django.views import View
 from store.models.customer import Customer
 from urllib.parse import urlencode, urlparse
 from urllib.parse import  parse_qs
+from django.contrib.auth.hashers import check_password
 
 def modify_url(url, param, value):
     # Parse the URL and retrieve the query string
@@ -19,7 +20,7 @@ def modify_url(url, param, value):
     
     return modified_url
 
-class Signup(View):
+class Change_Info(View):
     def post(self,request):
         url = request.POST.get('next','/')
         postData=request.POST
@@ -28,20 +29,22 @@ class Signup(View):
         phone_number=postData.get('phone_number')
         email=postData.get('email')
         password=postData.get('password')
-        error_msg=None
-
-        customer = Customer(first_name=first_name,
-                            last_name=last_name,
-                            phone_number=phone_number,
-                            email=email,
-                            password=password)
+        change_info_error_msg=None
         
-        if Customer.isExists(customer):
-            signup_error_msg=''
-            signup_error_msg='Email or Phone Number already in Use'
-            return redirect(modify_url(url,'signup_error_msg',signup_error_msg))
-        else :
-            customer.password=make_password(customer.password)
+        customer = Customer.get_customer_by_phone_number(request.session['customer_phone_number'])
+        if check_password(password, customer.password):
+            customer.first_name=first_name
+            customer.last_name=last_name
+            customer.phone_number=phone_number
+            customer.email=email      
             customer.save()
-            error_msg='Congratulations on creating an account! Please log in to continue.'
-            return redirect(modify_url(url,'error_msg',error_msg))
+            request.session['customer'] = customer.id
+            request.session['customer_first_name'] = customer.first_name
+            request.session['customer_last_name'] = customer.last_name
+            request.session['customer_phone_number'] = customer.phone_number
+            request.session['customer_email'] = customer.email
+
+            return redirect(modify_url(url,'change_info_error_msg',''))
+        else:
+            return redirect(modify_url(url,'change_info_error_msg','Plese Enter Correct Password'))
+            

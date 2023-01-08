@@ -7,6 +7,20 @@ from store.models.corousel import Corousel
 from store.models.banarasphoto import BanarasPhoto
 from store.models.customer import Customer
 from store.models.wishlist import Wishlist
+from urllib.parse import urlencode, urlparse, parse_qs
+
+def modify_url(url, param, value):
+    # Parse the URL and retrieve the query string
+    parsed_url = urlparse(url)
+    query_dict = parse_qs(parsed_url.query)
+
+    # Update the value of the parameter in the query string
+    query_dict[param] = value
+
+    # Rebuild the URL with the updated query string
+    new_query_string = urlencode(query_dict, doseq=True)
+    modified_url = parsed_url._replace(query=new_query_string).geturl()
+    return modified_url
 
 def addtowishlist(request):
     customer_id=request.session.get('customer')
@@ -22,14 +36,15 @@ def addtowishlist(request):
             wishlist=Wishlist(customer=customer,
                             product=product)
             wishlist.save()
-            return HttpResponseRedirect(next)
+            return redirect(next)
         else :
             print('product already in cart')
-            return HttpResponseRedirect(next)
+            return redirect(next)
 
     else :
         error_msg='Add products to your wishlist - Login Now!'
-        return redirect(next+'&&error_msg='+error_msg)
+        return redirect(modify_url(next, 'error_msg', error_msg))
+        
         
 
 def removeitem(request):

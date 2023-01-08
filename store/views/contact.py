@@ -9,6 +9,8 @@ class Contact_Page(View):
     def get(self, request):
         data = initial_data
         customer_id = request.session.get('customer')
+        data['wishlist_len']=0
+        
         if customer_id:
             customer = Customer.objects.get(id=customer_id)
             data['wishlist_len'] = len(Wishlist.objects.filter(customer=customer_id))

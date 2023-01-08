@@ -65,20 +65,20 @@
                     <h1 class="m-2 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Seth</span>Sarees</h1>
                 </a>
             </div>
-            <div class="col-lg-6 col-6 text-left">
+            <div class="col-lg-6 col-8 text-left">
                 <form method="GET" action="/search" >
                     
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search Product" name="search" id="search">
                         <div class="input-group-append">
-                            <span class=" btn btn-primary input-group-text  bg-transparent text-primary">
+                            <button class=" btn btn-primary input-group-text  bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
-                            </span>
+                            </button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right">
+            <div class="col-lg-3 col-4 text-right">
                 <a href="/wishlist?next={{ request.get_full_path }}" class="btn border">
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">{{wishlist_len}}</span>
@@ -152,9 +152,15 @@
                             </button>       </span>  
                             
                             {%else%}
-
+                            <div class="nav-item nav-link" style="text-decoration:none">
+                                <span style="color: black;" onmouseover="this.style.color='black';" onmouseout="this.style.color='black';">
+                                Hello! 
+                                </span>
+                                <a data-toggle="modal" data-target="#changeInfoModal" style="color: black; text-decoration: none;" onmouseover="this.style.color='#D19C97'; this.style.textDecoration='none';" onmouseout="this.style.color='black'; this.style.textDecoration='none';">{{request.session.customer_first_name}} </a>
+                            </div>
+                            <span>
                             <a href="/logout?next={{ request.get_full_path|urlencode }}" class="nav-item nav-link">Logout</a>
-
+                            </span>
                             {%endif%}
                         </div>
                     </div>
@@ -168,72 +174,68 @@
     <!-- Navbar End -->
     <!-- login start -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title">Login</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-            <!-- Login form goes here -->
-            <form  action="/login" method="post" name="login"  >
-					{%csrf_token%}
-
-					{%if error_msg%}
-					<div class="alert alert-danger text-center "   role="alert">
-						<h5 class="alert-heading my-1">{{error_msg}}</h5>
-						<p></p>
-						<p class="mb-0"></p>
-					</div>
-					{%endif%}
-                            <div class="control-group mb-3">
-                                <label for="email">Email address</label>
-                                <input type="text" class="form-control my-0 py-0 " id="email" name="phone_number" placeholder="Your Email or WhatsApp Number"
-                                    required="required" data-validation-required-message="Please enter your email" />
-                                
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <input type="hidden" id="custId" name="next" value="{{ request.get_full_path }}">
-                            <div class="control-group mb-3">
-                                <label for="email">Password</label> 
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                                    required="required" data-validation-required-message="Please enter a Password" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="d-flex flex-row text-justify-content-between">
-                                <a href="/contact" class="btn btn-secondary w-50 ml-2 mr-1">Forgot Password</a>
-                                
-                                <button class="btn btn-primary w-50 ml-1">Login</button>
-
-                                
-                            </div>
-                           
-                            
-                    </form>
-                            
-            </div>
-              
-              <div class="modal-footer d-flex flex-row justify-content-around">
-                <button class="btn btn-outline-primary mx-2 w-100" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#signupModal">Not a member yet? Sign up now!</button>
+            <div class="modal-header m-0 border-bottom-2 d-flex align-items-center justify-content-between">
+                <h5 class="modal-title mb-0">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+            <div class="modal-body px-3 ">
+            <!-- Login form goes here -->
+            <form class="form" action="/login" method="post" name="login">
+                {%csrf_token%}
+    
+                {%if error_msg%}
+                <div class="alert alert-danger text-center" role="alert">
+                    <h5 class="alert-heading my-1">{{request.GET.error_msg}}</h5>
+                    <p></p>
+                    <p class="mb-0"></p>
+                </div>
+                {%endif%}
+                <div class="form-group ">
+                    <label for="email">Email address</label>
+                    <input type="text" class="form-control" id="email" name="phone_number" placeholder="Your Email or WhatsApp Number"
+                        required="required" data-validation-required-message="Please enter your email" />
+                    <p class="help-block text-danger"></p>
+                </div>
+                <input type="hidden" id="custId" name="next" value="{{ request.get_full_path }}">
+                <div class="form-group mb-3">
+                    <label for="email">Password</label> 
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                        required="required" data-validation-required-message="Please enter a Password" />
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group d-flex flex-row justify-content-between">
+                    <a href="/contact" class="btn btn-link w-50 ml-2 mr-1">Forgot Password</a>
+                    <button class="btn btn-primary w-50 ml-1">Login</button>
+                </div>
+            </form>
+            </div>
+
+            <div class="modal-footer border-top-2 d-flex justify-content-center">
+                <button class="btn btn-outline-primary mx-2" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#signupModal">Not a member yet? Sign up now!</button>
+            </div>
         </div>
         </div>
     </div>
+    
     <!-- login end -->
+
+
 
 
     <!-- signup start -->
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Register Your Account</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+            <div class="modal-header m-0 border-bottom-2 d-flex align-items-center justify-content-between">
+                <h5 class="modal-title mb-0">Register your Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
             <div class="modal-body">
               <!-- Login form goes here -->
                <form action="/signup" method="post" name="signup">
@@ -270,7 +272,7 @@
                                 <p class="help-block text-danger"></p>
                               </div>
                               <div class="control-group">
-                                  <input type="password" class="form-control m-2 p-3" id="password" placeholder="Password"
+                                  <input type="password" class="form-control m-2 p-3" name="password" placeholder="Password"
                                       required="required" data-validation-required-message="Please enter a Password" />
                                   <p class="help-block text-danger"></p>
                               </div>
@@ -288,6 +290,70 @@
     
       
     <!-- signup end -->
+    
+    <!-- change_info start -->
+    <div class="modal fade" id="changeInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header m-0 border-bottom-2 d-flex align-items-center justify-content-between">
+                <h5 class="modal-title text-capitalize mb-0">Update your personal information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <div class="modal-body">
+              <!-- Login form goes here -->
+               <form action="/change_info" method="post" name="signup">
+                            {%csrf_token%}
+                            {%if request.GET.change_info_error_msg%}
+                            <div class="alert alert-danger text-center "   role="alert">
+                                <h5 class="alert-heading my-1">{{request.GET.change_info_error_msg}}</h5>
+                                <p></p>
+                                <p class="mb-0"></p>
+                            </div>
+                            {%endif%}
+                              <input type="hidden" id="custId" name="next" value="{{ request.get_full_path }}">
+                              <div class="form-group mb-3 pb-2" style="border-bottom: 1px solid grey">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" name="password" placeholder="Password" required="required" data-validation-required-message="Please enter a password" />
+                                <small class="form-text text-muted text-center">Password is required to update your account information.</small>
+                              </div>
+                              <div class="control-group">
+                                  <input type="text" class="form-control m-2 p-3" id="" name="first_name" placeholder="Your First Name"
+                                      required="required" data-validation-required-message="Please enter your First Name" value="{{request.session.customer_first_name}}" />
+                                  <p class="help-block text-danger"></p>
+                              </div>
+                              <div class="control-group">
+                                <input type="text" class="form-control m-2 p-3" id="" name="last_name" placeholder="Your Last Name"
+                                    required="required" data-validation-required-message="Please enter your Last Name" value="{{request.session.customer_last_name}}" />
+                                <p class="help-block text-danger"></p>
+                                </div>
+
+                              <div class="control-group">
+                                <input type="email" class="form-control m-2 p-3" id="" name="email" placeholder="Your Email"
+                                    required="required" data-validation-required-message="Please enter your Email" value="{{request.session.customer_email}}"/>
+                                <p class="help-block text-danger"></p>
+                                </div>
+
+                              <div class="control-group">
+                                <input type="text" class="form-control m-2 p-3" id="" name="phone_number" placeholder="Your WhatsApp Number"
+                                    required="required" data-validation-required-message="Please enter your WhatsApp Number" value="{{request.session.customer_phone_number}}" />
+                                <p class="help-block text-danger"></p>
+                              </div>
+                              
+            </div>
+            <div class="modal-footer">
+              <div type="button" class="btn btn-secondary" data-dismiss="modal">Close</div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      
+    <!-- change info end -->
 
 
 
@@ -296,7 +362,7 @@
         {%endblock%}
         
     <!-- Footer Start -->
-    <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+    <footer class="container-fluid bg-secondary text-dark mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
                 <a href="/" class="text-decoration-none">
@@ -316,7 +382,7 @@
                             <a class="text-dark mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Home</a>
                             <a class="text-dark mb-2" href="/about"><i class="fa fa-angle-right mr-2"></i>About</a>
                             <a class="text-dark mb-2" href="/category"><i class="fa fa-angle-right mr-2"></i>Our Sarees</a>
-                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Wishlist</a>
+                            <a class="text-dark mb-2" href="/wishlist"><i class="fa fa-angle-right mr-2"></i>Wishlist</a>
                             <a class="text-dark mb-2" href="/contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                             <a class="text-dark mb-2" href="https://www.google.com/search?q=seth%20sarees&oq=seth+sarees&aqs=chrome..69i57j69i59j69i61l3.2280j0j4&sourceid=chrome&ie=UTF-8&tbs=lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsb6kLBLebcYjMVq3ZZjTXegQRwJRQ:1671576707763&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjQ5oW_pIn8AhVywXMBHfXHBNoQvS56BAgeEAE&sa=X&rlst=f#lrd=0x398e2e1ed9ad1ce9:0x752abd6f8a7c826,3,,,&rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6592943,83.033485],[25.2677299,82.87100439999999]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10"><i class="fa fa-angle-right mr-2"></i>Rate Us on Google</a>
 
@@ -371,13 +437,13 @@
             </div>
         </div>
         
-    </div>
+    </footer>
     <!-- Footer End -->
+    <button   class="btn btn-primary sticky-btn" onclick="window.location.href='tel:+{{phone_no}}'">Call-Us <span class="pl-1"><i class="fa fa-phone" ></i></span></button>
 
 
     <!-- Back to Top -->
 
-    <a href="tel:+{{phone_no}}"  class="btn btn-primary back-to-top">Call-Us <span class="pl-1"><i class="fa fa-phone" ></i></span></a>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -400,14 +466,6 @@
         AOS.init({});
     </script>
 
-    {% if error_msg  %}
-    <script>
-        $(document).ready(function() {
-            $('#loginModal').modal('show');
-        });
-    </script>
-    {% endif %}
-
     {% if request.GET.signup_error_msg  %}
     <script>
         $(document).ready(function() {
@@ -417,4 +475,19 @@
     {% endif %}
 
 
+    {% if request.GET.error_msg  %}
+    <script>
+        $(document).ready(function() {
+            $('#loginModal').modal('show');
+        });
+    </script>
+    {% endif %}
+
+    {% if request.GET.change_info_error_msg  %}
+    <script>
+        $(document).ready(function() {
+            $('#changeInfoModal').modal('show');
+        });
+    </script>
+    {% endif %}
 </body>

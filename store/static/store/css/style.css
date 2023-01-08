@@ -9565,20 +9565,25 @@ a.text-dark:hover, a.text-dark:focus {
   list-style-type: none;
 }
 
-.back-to-top {
+.sticky-btn {
+  z-index: 9999;
   position: fixed;
-  display: flex;
-  right: 30px;
-  bottom: 30px;
-  z-index: 11;
-  animation: action 1s infinite alternate;
+  bottom: 45px;
+  right: 20px;
+  animation: bounce 1.2s infinite alternate;
 }
 
-@keyframes action {
+@keyframes bounce {
   0% {
     transform: translateY(0);
   }
-  100% {
-    transform: translateY(-15px);
+  50% {
+    transform: translateY(-10px);
   }
+  100% {
+    transform: translateY(0);
+  }
+}
+:not(footer) .sticky-btn {
+  display: block;
 }

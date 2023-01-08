@@ -11,11 +11,11 @@ from .data import initial_data
 def show_category(request):
     data = initial_data
     customer_id = request.session.get('customer')
+    data['wishlist_len']=0
     if customer_id:
         customer = Customer.objects.get(id=customer_id)
         data['wishlist_len'] = len(Wishlist.objects.filter(customer=customer_id))
-    error_msg=None
-
+    error_msg=''
     error_msg = request.GET.get('error_msg')
     data['error_msg'] = error_msg
 
@@ -23,6 +23,7 @@ def show_category(request):
     if category_id:
         data['products'] = Product.get_all_products_by_categoryid(category_id)
         data['category_obj'] = Category.objects.get(pk=category_id)
+
     else:
         data['products'] = Product.get_all_products()
         data['categories'] = Category.get_all_categories()

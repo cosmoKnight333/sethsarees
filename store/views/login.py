@@ -31,7 +31,9 @@ class Login(View):
             if check_password(password, customer.password):
                 request.session['customer'] = customer.id
                 request.session['customer_first_name'] = customer.first_name
+                request.session['customer_last_name'] = customer.last_name
                 request.session['customer_phone_number'] = customer.phone_number
+                request.session['customer_email'] = customer.email
                 url=modify_url(url,'signup_error_msg','')
                 return redirect(modify_url(url,'error_msg',''))
             else:

@@ -7,6 +7,7 @@ from .data import initial_data
 def show_sent_list(request):
     data=initial_data
     customer_id=request.session.get('customer')
+    data['wishlist_len']=0
     if(customer_id):
         customer=Customer.objects.get(id=customer_id)
         wishlist=Wishlist.objects.filter(customer=customer_id)

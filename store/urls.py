@@ -6,6 +6,7 @@ from .views.about import show_about
 from .views.contact import Contact_Page
 from .views.login import Login
 from .views.signup import Signup
+from .views.change_info import Change_Info
 from .views.detail import Detail
 from .views.addtowishlist import addtowishlist
 from .views.addtowishlist import removeitem
@@ -28,6 +29,7 @@ urlpatterns = [
     path('detail',Detail.as_view(),name="detail"),
     path('login',Login.as_view(),name='login'),
     path('signup',Signup.as_view(),name='signup'),
+    path('change_info',Change_Info.as_view(),name='change_info'),
     path('show-sent-list',show_sent_list),
 
 ]

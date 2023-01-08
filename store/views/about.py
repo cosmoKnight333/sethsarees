@@ -10,6 +10,8 @@ def show_about(request):
     error_msg = request.GET.get('error_msg')
     data['error_msg'] = error_msg
     customer_id = request.session.get('customer')
+    data['wishlist_len']=0
+    
     if customer_id:
         customer = Customer.objects.get(id=customer_id)
         wishlist_len = len(Wishlist.objects.filter(customer=customer_id))
