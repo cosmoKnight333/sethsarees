@@ -4,8 +4,7 @@ from django.views import View
 from store.models.customer import Customer
 from urllib.parse import urlencode, urlparse
 from urllib.parse import  parse_qs
-
-
+\
 def modify_url(url, param, value):
     # Parse the URL and retrieve the query string
     parsed_url = urlparse(url)
@@ -42,7 +41,6 @@ class Login(View):
                 return redirect(modify_url(url,'error_msg',error_msg))
                 
         else:
-            url=modify_url(url,'signup_error_msg','')
-            
+            url=modify_url(url,'signup_error_msg','')            
             error_msg = "Enter Valid Email/Whatsapp Number."
             return redirect(modify_url(url,'error_msg',error_msg))

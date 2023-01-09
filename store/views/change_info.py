@@ -30,7 +30,6 @@ class Change_Info(View):
         email=postData.get('email')
         password=postData.get('password')
         change_info_error_msg=None
-        
         customer = Customer.get_customer_by_phone_number(request.session['customer_phone_number'])
         if check_password(password, customer.password):
             customer.first_name=first_name
@@ -43,7 +42,6 @@ class Change_Info(View):
             request.session['customer_last_name'] = customer.last_name
             request.session['customer_phone_number'] = customer.phone_number
             request.session['customer_email'] = customer.email
-
             return redirect(modify_url(url,'change_info_error_msg',''))
         else:
             return redirect(modify_url(url,'change_info_error_msg','Plese Enter Correct Password'))
