@@ -114,25 +114,21 @@
 
 
 <!-- Subscribe Start -->
-<div class="container-fluid bg-secondary my-5" data-aos="fade-up">
-    <div class="row justify-content-md-center py-5 px-xl-5">
-        <div class="col-12 col-md-6  py-5">
-            <div class="text-center mb-2 pb-2">
-                <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">Ask Your Query</span></h2>
-                <p>Efficiently address any issues or concerns by chatting with us on WhatsApp.<br>We provide 24x7 support.</p>
-            </div>
-            <form action="">
-                <div class="input-group d-flex flex-row align-items-center justify-content-center">
-                    <h4>Click here to connect on WhatsApp:</h4>
-                    <div class="mx-2 mb-1">
-                        <a href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+Store" class="btn btn-outline-primary px-3">Chat With Us</a>
-                    
-                    </div>
-                </div>
-            </form>
-        </div>
+{% comment %} .bg-img {
+    background-image: url('path/to/your-image.jpg'); /* change this to the path of your image */
+    background-size: cover; /* scale the image to cover the entire element */
+    background-position: center; /* center the image */
+  } {% endcomment %}
+  <div class="container-fluid bg-secondary p-5">
+    <div class="row">
+      <div class="col-md-8 mx-auto text-center">
+        <h2 class="my-4">Experience Convenient Shopping with Video Call Assistance</h2>
+        <p class="lead mb-4">Our store offers the convenience of scheduling a video call with one of our dedicated customer service representatives.</p>
+        <p class="mb-4">To make the process smooth, please share your wishlist before the call.</p>
+        <a href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+a+video+call+shopping.+Kindly+fix+a+schedule."  class="btn btn-primary btn-lg">Schedule a Video Call</a>
+      </div>
     </div>
-</div>
+  </div>
 <!-- Subscribe End -->
 
         <!-- Reach us Start-->
@@ -170,7 +166,7 @@
             <div class="row justify-content-center justify-content-md-center  px-xl-5">
                 <div class="col-lg-6  ">
                     <div class="text-center mb-2 pb-2">
-                        <h2 class="section-title px-5 "><span class="bg-secondary px-2 text-capitalize" e>Hear from our satisfied customers</span> </h2>
+                        <h2 class="section-title px-5 "><span class="bg-secondary px-2 text-capitalize" >Hear from our satisfied customers</span> </h2>
                     </div>  
                 </div>
                
@@ -203,7 +199,7 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between border">
-                            <a href="{{review.back_link}}" class="btn btn-sm text-dark p-0"><i class="fab fa-google text-primary mr-1"></i>View Detail</a>
+                            <a href="{{review.back_link}}" target="_blank" class="btn btn-sm text-dark p-0"><i class="fab fa-google text-primary mr-1"></i>View Detail</a>
                             <a href="https://www.google.com/search?q=seth%20sarees&oq=seth+sarees&aqs=chrome..69i57j69i59j69i61l3.2280j0j4&sourceid=chrome&ie=UTF-8&tbs=lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsb6kLBLebcYjMVq3ZZjTXegQRwJRQ:1671576707763&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjQ5oW_pIn8AhVywXMBHfXHBNoQvS56BAgeEAE&sa=X&rlst=f#lrd=0x398e2e1ed9ad1ce9:0x752abd6f8a7c826,3,,,&rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6592943,83.033485],[25.2677299,82.87100439999999]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10" class="btn btn-sm text-dark p-0"><i class="fab fa-plus text-primary mr-1"></i>Add Review</a>
                         </div>
                     </div>

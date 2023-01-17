@@ -22,6 +22,7 @@ class Detail(View):
         product_obj=Product.get_product_by_id(product_id)
         data['product_obj'] = product_obj
         data['products'] = Product.get_all_products_by_categoryid_random(product_obj.category.id)
+        data['title']="Explore "+ product_obj.name + "- Materials,Fabric quality,Weaving technique,Zari work,Border"
         return render(request, 'detail.html', data)
     
     def post(self, request):

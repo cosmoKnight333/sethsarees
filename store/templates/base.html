@@ -3,15 +3,22 @@
     {% load static %}
 <head>
     <meta charset="utf-8">
-    <title>Seth Sarees</title>
+    <title>
+        {%if title%}
+        {{title}}
+        {%else%}
+        Seth Sarees
+        {%endif%}
+    </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-
+   
+    <meta name="description" content="Discover a wide range of luxurious and unique Silk and Banarasi Sarees in Varanasi at wholesale and retail prices. Visit our showroom or shop online now.">
+    <meta name="keywords" content="Banarasi Sarees, Silk Sarees, Varanasi, Wholesale, Retail,Silk,Saree">
+   
     <!-- Favicon -->
     <!-- <link href="apple-touch-icon.png" rel="icon"> -->
     <link rel="icon" sizes="180x180" href="{% static './store/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static './store/favicon-32x32.png"' %} ">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static './store/favicon-32x32.png' %} ">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static './store/favicon-16x16.png' %} ">
     <link rel="manifest"  href="{% static './store/site.webmanifest' %} " >
     <!-- Google Web Fonts -->
@@ -37,23 +44,23 @@
         <div class="row bg-secondary py-2 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-dark" href="https://wa.me/{{phone_no}}?text=Hello,+I+needed+some+help+related+to+your+store">Help</a>
+                    <a class="text-dark" target="_blank" href="https://wa.me/{{phone_no}}?text=Hello,+I+needed+some+help+related+to+your+store">Help</a>
                     <span class="text-muted px-2">|</span>
-                    <a class="text-dark" href="https://wa.me/{{phone_no}}?text=Hello,+I+needed+some+support+related+to+your+store">Support</a>
+                    <a class="text-dark" target="_blank" href="https://wa.me/{{phone_no}}?text=Hello,+I+needed+some+support+related+to+your+store">Support</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-dark px-2" href="https://www.facebook.com/profile.php?id=100089091092224">
+                    <a class="text-dark px-2" href="https://www.facebook.com/profile.php?id=100089091092224" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a class="text-dark px-2" href="https://www.instagram.com/seth_sarees/">
+                    <a class="text-dark px-2" href="https://www.instagram.com/seth_sarees/" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a class="text-dark px-2" href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+Store">
+                    <a class="text-dark px-2" href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+Store" target="_blank">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a class="text-dark pl-2" href="">
+                    <a class="text-dark pl-2" href="" target="_blank">
                         <i class="fab fa-telegram"></i>
                     </a>
                 </div>
@@ -65,7 +72,7 @@
                     <h1 class="m-2 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Seth</span>Sarees</h1>
                 </a>
             </div>
-            <div class="col-lg-6 col-8 text-left">
+            <div class="col-lg-6 col-7 text-left">
                 <form method="GET" action="/search" >
                     
                     <div class="input-group">
@@ -78,10 +85,10 @@
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-4 text-right">
-                <a href="/wishlist?next={{ request.get_full_path }}" class="btn border">
+            <div class="col-lg-3 col-5 text-right">
+                <a href="/wishlist?next={{ request.get_full_path }}" class="btn border ">
                     <i class="fas fa-heart text-primary"></i>
-                    <span class="badge">{{wishlist_len}}</span>
+                    <span class="badge">Wishlist: {{wishlist_len}}</span>
                 </a>
 
             </div>
@@ -187,7 +194,7 @@
             <form class="form" action="/login" method="post" name="login">
                 {%csrf_token%}
     
-                {%if error_msg%}
+                {%if request.GET.error_msg%}
                 <div class="alert alert-danger text-center" role="alert">
                     <h5 class="alert-heading my-1">{{request.GET.error_msg}}</h5>
                     <p></p>
@@ -195,7 +202,7 @@
                 </div>
                 {%endif%}
                 <div class="form-group ">
-                    <label for="email">Email address</label>
+                    <label for="email">Email address or WhatsApp Number</label>
                     <input type="text" class="form-control" id="email" name="phone_number" placeholder="Your Email or WhatsApp Number"
                         required="required" data-validation-required-message="Please enter your email" />
                     <p class="help-block text-danger"></p>
@@ -208,7 +215,7 @@
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group d-flex flex-row justify-content-between">
-                    <a href="/contact" class="btn btn-link w-50 ml-2 mr-1">Forgot Password</a>
+                    <a href="/forgot-password" class="btn btn-link w-50 ml-2 mr-1">Forgot Password</a>
                     <button class="btn btn-primary w-50 ml-1">Login</button>
                 </div>
             </form>
@@ -266,11 +273,28 @@
                                 <p class="help-block text-danger"></p>
                                 </div>
 
-                              <div class="control-group">
-                                <input type="text" class="form-control m-2 p-3" id="" name="phone_number" placeholder="Your WhatsApp Number"
+                              <div class="control-group d-flex flex-row align-items-center justify-content-center">
+                                <select id="country-code" name="country-code" class=" m-1 form-control form-control-sm p-0" style="height:50px;width:150px;padding:0px">
+                                    <option value="+91" style="font-size: small;">+91 (Inida)</option>
+                                    <option value="+1" style="font-size: small;">+1 (USA)</option>
+                                    <option value="+44" style="font-size: small;">+44 (UK)</option>
+                                    <option value="+33" style="font-size: small;">+33 (France)</option>
+                                    <option value="+81" style="font-size: small;">+81 (Japan)</option>
+                                    <option value="+55" style="font-size: small;">+55 (Brazil)</option>
+                                    <option value="+52" style="font-size: small;">+52 (Mexico)</option>
+                                    <option value="+86" style="font-size: small;">+86 (China)</option>
+                                  </select>
+                                <input type="text" class="form-control m-1 p-3" id="" name="phone_number" placeholder="Your WhatsApp Number"
                                     required="required" data-validation-required-message="Please enter your WhatsApp Number" />
                                 <p class="help-block text-danger"></p>
-                              </div>
+                                  
+                            </div>
+                            <div class="control-group text-center m   align-items-center justify-content-center">
+
+                               <a  href="https://wa.me/14155238886?text=join+riding-world" target="_blank" class="btn text-center w-75 btn-outline-primary px-3">verify Its You</a>
+                                <small style="display:block">Send us the generated code on whatsApp to verify you are you.</small>
+                            </div>
+
                               <div class="control-group">
                                   <input type="password" class="form-control m-2 p-3" name="password" placeholder="Password"
                                       required="required" data-validation-required-message="Please enter a Password" />
@@ -296,12 +320,14 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header m-0 border-bottom-2 d-flex align-items-center justify-content-between">
-                <h5 class="modal-title text-capitalize mb-0">Update your personal information</h5>
+                <h5 class="modal-title text-capitalize mb-0s">Update your personal information</h5>
+                
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
             <div class="modal-body">
+                
               <!-- Login form goes here -->
                <form action="/change_info" method="post" name="signup">
                             {%csrf_token%}
@@ -335,12 +361,28 @@
                                 <p class="help-block text-danger"></p>
                                 </div>
 
-                              <div class="control-group">
-                                <input type="text" class="form-control m-2 p-3" id="" name="phone_number" placeholder="Your WhatsApp Number"
-                                    required="required" data-validation-required-message="Please enter your WhatsApp Number" value="{{request.session.customer_phone_number}}" />
-                                <p class="help-block text-danger"></p>
-                              </div>
-                              
+                                <div class="control-group d-flex flex-row align-items-center justify-content-center">
+                                    <select id="country-code" name="country-code" class=" m-1 form-control form-control-sm p-0" style="height:50px;width:150px;padding:0px">
+                                        <option value="+91" style="font-size: small;">+91 (Inida)</option>
+                                        <option value="+1" style="font-size: small;">+1 (USA)</option>
+                                        <option value="+44" style="font-size: small;">+44 (UK)</option>
+                                        <option value="+33" style="font-size: small;">+33 (France)</option>
+                                        <option value="+81" style="font-size: small;">+81 (Japan)</option>
+                                        <option value="+55" style="font-size: small;">+55 (Brazil)</option>
+                                        <option value="+52" style="font-size: small;">+52 (Mexico)</option>
+                                        <option value="+86" style="font-size: small;">+86 (China)</option>
+                                      </select>
+                                    <input type="text" class="form-control m-1 p-3" id="" name="phone_number" placeholder="Your WhatsApp Number"
+                                        required="required" data-validation-required-message="Please enter your WhatsApp Number" value="{{request.session.customer_phone_number}}" />
+                                    <p class="help-block text-danger"></p>
+                                      
+                                </div>
+                                <div class="control-group text-center m   align-items-center justify-content-center">
+    
+                                   <a  href="https://wa.me/14155238886?text=join+riding-world" target="_blank" class="btn text-center w-75 btn-outline-primary px-3">verify Its You</a>
+                                    <small style="display:block">Send us the generated code on whatsApp to verify you are you.</small>
+                                </div>
+                         
             </div>
             <div class="modal-footer">
               <div type="button" class="btn btn-secondary" data-dismiss="modal">Close</div>
@@ -369,8 +411,8 @@
                     <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">Seth</span>Sarees</h1>
                 </a>
                 <p>Retailer and wholeseller in all kinds of Banarasi and Silk Sarees.</p>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i><a href="https://www.google.com/search?q=seth%20sarees&oq=seth&aqs=chrome.0.69i59j69i57j69i59j69i60j69i61l2j69i60.1882j0j4&sourceid=chrome&ie=UTF-8&tbs=lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsaSynD1unvd0ebaW9NJ0Fx-3SjwXA:1671827345404&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjjtbGYypD8AhVH03MBHdmAB1gQvS56BAgYEAE&sa=X&rlst=f#rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6578831,83.0200176],[25.2926608,82.8717667]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10" style="color:black;">{{address}}</a></p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a href="mailto:someone@example.com" style="color:black;">{{email}}</a></p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i><a href="https://www.google.com/search?q=seth%20sarees&oq=seth&aqs=chrome.0.69i59j69i57j69i59j69i60j69i61l2j69i60.1882j0j4&sourceid=chrome&ie=UTF-8&tbs=lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsaSynD1unvd0ebaW9NJ0Fx-3SjwXA:1671827345404&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjjtbGYypD8AhVH03MBHdmAB1gQvS56BAgYEAE&sa=X&rlst=f#rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6578831,83.0200176],[25.2926608,82.8717667]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10 "  target="_blank"style="color:black;">{{address}}</a></p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a href="mailto:sethsarees@gmail.com"  target="_blank" style="color:black;">{{email}}</a></p>
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i><a href="tel:+{{phone_no}}" style="color:black;"> +{{phone_no}}</a></p>
                 
             </div>
@@ -382,9 +424,9 @@
                             <a class="text-dark mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Home</a>
                             <a class="text-dark mb-2" href="/about"><i class="fa fa-angle-right mr-2"></i>About</a>
                             <a class="text-dark mb-2" href="/category"><i class="fa fa-angle-right mr-2"></i>Our Sarees</a>
-                            <a class="text-dark mb-2" href="/wishlist"><i class="fa fa-angle-right mr-2"></i>Wishlist</a>
+                            <a class="text-dark mb-2" href="/wishlist"><i class="fa fa-angle-right mr-2"></i>Wish list</a>
                             <a class="text-dark mb-2" href="/contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                            <a class="text-dark mb-2" href="https://www.google.com/search?q=seth%20sarees&oq=seth+sarees&aqs=chrome..69i57j69i59j69i61l3.2280j0j4&sourceid=chrome&ie=UTF-8&tbs=lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsb6kLBLebcYjMVq3ZZjTXegQRwJRQ:1671576707763&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjQ5oW_pIn8AhVywXMBHfXHBNoQvS56BAgeEAE&sa=X&rlst=f#lrd=0x398e2e1ed9ad1ce9:0x752abd6f8a7c826,3,,,&rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6592943,83.033485],[25.2677299,82.87100439999999]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10"><i class="fa fa-angle-right mr-2"></i>Rate Us on Google</a>
+                            <a class="text-dark mb-2" target="_blank" href="https://www.google.com/search?q=seth%20sarees&oq=seth+sarees&aqs=chrome..69i57j69i59j69i61l3.2280j0j4&sourceid=chrome&ie=UTF-8&tbs=lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10&tbm=lcl&sxsrf=ALiCzsb6kLBLebcYjMVq3ZZjTXegQRwJRQ:1671576707763&rflfq=1&num=10&rldimm=527673046138865702&lqi=CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU&phdesc=J3chXqvknqQ&ved=2ahUKEwjQ5oW_pIn8AhVywXMBHfXHBNoQvS56BAgeEAE&sa=X&rlst=f#lrd=0x398e2e1ed9ad1ce9:0x752abd6f8a7c826,3,,,&rlfi=hd:;si:527673046138865702,l,CgtzZXRoIHNhcmVlc0iz8qLwsq6AgAhaHRAAEAEYABgBIgtzZXRoIHNhcmVlcyoGCAIQABABkgEXZGVzaWduZXJfY2xvdGhpbmdfc3RvcmU,y,J3chXqvknqQ;mv:[[25.6592943,83.033485],[25.2677299,82.87100439999999]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3!3sIAE,lf:1,lf_ui:10"><i class="fa fa-angle-right mr-2"></i>Rate Us on Google</a>
 
                         </div>
                     </div>
@@ -402,7 +444,7 @@
                         <div class="d-flex flex-column ">
         
                             <p class=text-muted>Chat with us on Whatsapp to get your queries resolved.We provide 24x7 support.</p>
-                            <a href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+Store" class="btn btn-primary px-3 w-100">Chat With Us</a>
+                            <a href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+Store" target="_blank" class="btn btn-primary px-3 w-100">Chat With Us</a>
                             
                         </div>
                     </div>
@@ -420,13 +462,13 @@
             <div class="col-md-6 px-xl-0">
 
                 <div class="col  text-center  text-sm-right ">
-                        <a class="text-dark px-2" href="https://www.facebook.com/profile.php?id=100089091092224">
+                        <a class="text-dark px-2" href="https://www.facebook.com/profile.php?id=100089091092224" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a class="text-dark px-2" href="https://www.instagram.com/seth_sarees/">
+                        <a class="text-dark px-2" href="https://www.instagram.com/seth_sarees/" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a class="text-dark px-2" href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+Store">
+                        <a class="text-dark px-2" href="https://wa.me/{{phone_no}}?text=Hello,+I+am+interested+in+knowing+more+about+your+Store" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                         <a class="text-dark pl-2" href="">

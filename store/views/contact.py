@@ -17,7 +17,7 @@ class Contact_Page(View):
         error_msg=None
         error_msg = request.GET.get('error_msg')
         data['error_msg'] = error_msg
-
+        data['title']="Contact Us - Visit Our Showroom or Get in Touch for Wholesale and Retail Orders and Styling Advice"
         return render(request, 'contact.html', data)
 
     def post(self, request):

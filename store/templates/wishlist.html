@@ -5,13 +5,13 @@
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h2 class="font-weight-semi-bold  mb-3">Your WishList</h2>
+            <h2 class="font-weight-semi-bold  mb-3">Your Wish List</h2>
             <div class="d-flex flex-column text-center align-items-center justify-content-center ">
-                <p class="m-0"><a href="/category">Explore Our Range</a></p>
+                <p class="m-0 mb-2"><a href="/category">Explore Our Range</a></p>
                 
                 <p class="m-0"> 
                     
-                    <a href="https://wa.me/{{phone_no}}?text= Hey I am {{customer_name}} and I have prepared my list on URL: {{ request.get_host }}/show-sent-list?customer_id={{request.session.customer}} kindly check it">Share List On Whatsapp</a>
+                    <a  href="https://wa.me/{{phone_no}}?text= Hey I am {{customer_name}} and I have prepared my list on URL: {{ request.get_host }}/show-sent-list?customer_id={{request.session.customer}} kindly check it" target="_blank" class="btn btn-outline-primary px-3">WhatsApp the list to us</a>
                 </p>
             </div>
         </div>

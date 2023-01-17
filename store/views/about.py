@@ -16,5 +16,6 @@ def show_about(request):
         customer = Customer.objects.get(id=customer_id)
         wishlist_len = len(Wishlist.objects.filter(customer=customer_id))
         data['wishlist_len'] = wishlist_len
-
+    
+    data['title']="About Our Shop - Trusted Silk and Banarasi Saree Wholesaler and Retailer in Varanasi Since 1993"
     return render(request, 'about.html', data)

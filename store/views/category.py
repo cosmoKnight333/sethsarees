@@ -22,10 +22,12 @@ def show_category(request):
     category_id = request.GET.get('category')
     if category_id:
         data['products'] = Product.get_all_products_by_categoryid(category_id)
-        data['category_obj'] = Category.objects.get(pk=category_id)
-
+        category_obj=Category.objects.get(pk=category_id)
+        data['category_obj'] = category_obj
+        data['title']="Saree Category - "+category_obj.name+"- Browse by Fabric, Occasion, or Style"
     else:
+        data['title']="Saree Collection - Explore Our Extensive Range of Luxurious Silk and Banarasi Sarees - Wholesale and Retail"
         data['products'] = Product.get_all_products()
         data['categories'] = Category.get_all_categories()
-        
+    
     return render(request, 'category.html', data)

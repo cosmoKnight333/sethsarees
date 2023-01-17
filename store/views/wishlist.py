@@ -27,13 +27,17 @@ def show_wishlist(request):
         wishlist=Wishlist.objects.filter(customer=customer_id)
         wishlist_len=len(wishlist)
         data['wishlist']=wishlist
-        data['customer_name']=customer.first_name+customer.last_name
+        data['customer_name']=customer.first_name+' '+customer.last_name
         data['wishlist_len']=wishlist_len
+        data['title']="My Wishlist - Keep track of your favorite Silk and Banarasi Sarees in Varanasi"
         return render(request,'wishlist.html',data)
     else :
-        next = request.GET.get('next', '/')
-        print(next,"sala betichod")
+        url = request.GET.get('next', '/')
+        url=modify_url(url,'error_msg','')
+        url=modify_url(url,'signup_error_msg','')
+        url=modify_url(url,'change_info_error_msg','')
+
         error_msg=None
         error_msg='Get access to your wishlist - Login Now!'
-        return redirect(modify_url(next,'error_msg',error_msg))
+        return redirect(modify_url(url,'error_msg',error_msg))
    

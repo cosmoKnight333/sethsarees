@@ -3,7 +3,11 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50) 
     phone_number=models.CharField(max_length=15)
+    country_code=models.CharField(default='91' , null=True,max_length=15)
+    verification_token=models.CharField(default='' , null=True,max_length=100)
+    
     email=models.EmailField()
+
     password=models.CharField(max_length=500)
     def register(self):
         self.save()
