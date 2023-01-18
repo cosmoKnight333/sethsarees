@@ -69,9 +69,9 @@ class Change_Info(View):
             complete_old_phone_number='+'+country_code+phone_number
             
             print(complete_phone_number,complete_old_phone_number)
-            # if not is_number_in_sandbox(complete_phone_number,'AC5146a5e9545497bd6b6c137488f5c47c','6680c196d5d7b17d24b6981a21ef3299'):
+            # if not is_number_in_sandbox(complete_phone_number,'AC5146a5e9545497bd6b6c137488f5c47c',''):
             #     return redirect(modify_url(url,'change_info_error_msg','Plese Enter Verified whatsApp number'))
-            # remove_number_from_sandbox('+'+customer.country_code+customer.phone_number,'AC5146a5e9545497bd6b6c137488f5c47c','6680c196d5d7b17d24b6981a21ef3299')
+            # remove_number_from_sandbox('+'+customer.country_code+customer.phone_number,'AC5146a5e9545497bd6b6c137488f5c47c','')
             
             customer.first_name=first_name
             customer.last_name=last_name
