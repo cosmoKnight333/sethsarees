@@ -1,1 +1,1 @@
-web: gunicorn sethsarees.wsgi --log-file -
+web: python manage.py.py runserver 0.0.0.0:$PORT
